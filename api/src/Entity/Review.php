@@ -6,10 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 
 /**
  * A review of a book.
- * @ApiResource(attributes={"filters"={"review.search_filter","review.publication_date_filter"}})
+ * @ApiResource(attributes={"filters"={"review.search_filter"}})
+ * @ApiFilter(DateFilter::class, properties={"publicationDate"})
  * @ORM\Entity
  */
 class Review
